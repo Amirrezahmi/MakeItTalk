@@ -107,7 +107,7 @@ class Vis_old():
 
         print(root_dir)
         self.src_dir = os.path.join(root_dir, r'nn_result/{}'.format(run_name))
-        self.std_face = np.loadtxt(r'src/dataset/utils/STD_FACE_LANDMARKS.txt')
+        self.std_face = np.loadtxt(r'/content/MakeItTalk/src/dataset/utils/STD_FACE_LANDMARKS.txt')
         self.std_face = self.std_face.reshape((-1, 204))
 
         fls = np.loadtxt(os.path.join(self.src_dir, pred_fl_filename))
@@ -202,7 +202,7 @@ class Vis_comp():
 
         print(root_dir)
         self.src_dir = os.path.join(root_dir, r'nn_result/{}'.format(run_name))
-        self.std_face = np.loadtxt(r'src/dataset/utils/STD_FACE_LANDMARKS.txt')
+        self.std_face = np.loadtxt(r'/content/MakeItTalk/src/dataset/utils/STD_FACE_LANDMARKS.txt')
         self.std_face = self.std_face.reshape((-1, 204))
 
         def fls_adj(fls):

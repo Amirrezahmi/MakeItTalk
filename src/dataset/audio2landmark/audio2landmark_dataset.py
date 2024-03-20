@@ -17,7 +17,7 @@ import random
 from util.icp import icp
 from scipy.spatial.transform import Rotation as R
 
-STD_FACE_LANDMARK_FILE_DIR = 'src/dataset/utils/STD_FACE_LANDMARKS.txt'
+STD_FACE_LANDMARK_FILE_DIR = '/content/MakeItTalk/src/dataset/utils/STD_FACE_LANDMARKS.txt'
 
 
 class Audio2landmark_Dataset(data.Dataset):
@@ -42,7 +42,7 @@ class Audio2landmark_Dataset(data.Dataset):
         self.fl_data = [self.fl_data[i] for i in valid_idx]
         self.au_data = [self.au_data[i] for i in valid_idx]
 
-        au_mean_std = np.loadtxt('src/dataset/utils/MEAN_STD_AUTOVC_RETRAIN_MEL_AU.txt')
+        au_mean_std = np.loadtxt('/content/MakeItTalk/src/dataset/utils/MEAN_STD_AUTOVC_RETRAIN_MEL_AU.txt')
         au_mean, au_std = au_mean_std[0:au_mean_std.shape[0]//2], au_mean_std[au_mean_std.shape[0]//2:]
 
         self.au_data = [((au - au_mean) / au_std, info) for au, info in self.au_data]
@@ -110,7 +110,7 @@ def norm_output_fls_rot(fl_data_i, anchor_t_shape=None):
     t_shape_idx = (27, 28, 29, 30, 33, 36, 39, 42, 45)
     if(anchor_t_shape is None):
         anchor_t_shape = np.loadtxt(
-            r'src/dataset/utils/ANCHOR_T_SHAPE_{}.txt'.format(len(t_shape_idx)))
+            r'/content/MakeItTalk/src/dataset/utils/ANCHOR_T_SHAPE_{}.txt'.format(len(t_shape_idx)))
         s = np.abs(anchor_t_shape[5, 0] - anchor_t_shape[8, 0])
         anchor_t_shape = anchor_t_shape / s * 1.0
         c2 = np.mean(anchor_t_shape[[4,5,8], :], axis=0)
@@ -229,7 +229,7 @@ class Speaker_aware_branch_Dataset(data.Dataset):
         #     print('SAVE!')
 
 
-        au_mean_std = np.loadtxt('src/dataset/utils/MEAN_STD_AUTOVC_RETRAIN_MEL_AU.txt') # np.mean(self.au_data[0][0]), np.std(self.au_data[0][0])
+        au_mean_std = np.loadtxt('/content/MakeItTalk/src/dataset/utils/MEAN_STD_AUTOVC_RETRAIN_MEL_AU.txt') # np.mean(self.au_data[0][0]), np.std(self.au_data[0][0])
         au_mean, au_std = au_mean_std[0:au_mean_std.shape[0]//2], au_mean_std[au_mean_std.shape[0]//2:]
 
         self.au_data = [((au - au_mean) / au_std, info) for au, info in self.au_data]

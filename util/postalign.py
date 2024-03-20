@@ -19,8 +19,8 @@ for f in fs:
 
     os.system('ffmpeg -y -i examples/{} -filter:v crop=256:256:256:0 -strict -2 examples/crop_{}'.format(f, f))
 
-    cap = cv2.VideoCapture('examples/crop_{}'.format(f))
-    writer = cv2.VideoWriter('examples/tmp_{}.mp4'.format(f[:-4]),
+    cap = cv2.VideoCapture('/content/MakeItTalk/examples/crop_{}'.format(f))
+    writer = cv2.VideoWriter('/content/MakeItTalk/examples/tmp_{}.mp4'.format(f[:-4]),
                                      cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 62.5, (256, 256))
 
     length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))

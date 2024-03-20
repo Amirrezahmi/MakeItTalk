@@ -32,7 +32,7 @@ class Audio2landmark_model():
 
         # Step 1 : load opt_parser
         self.opt_parser = opt_parser
-        self.std_face_id = np.loadtxt('src/dataset/utils/STD_FACE_LANDMARKS.txt')
+        self.std_face_id = np.loadtxt('/content/MakeItTalk/src/dataset/utils/STD_FACE_LANDMARKS.txt')
         if(jpg_shape is not None):
             self.std_face_id = jpg_shape
         self.std_face_id = self.std_face_id.reshape(1, 204)
@@ -70,7 +70,7 @@ class Audio2landmark_model():
         self.C.to(device)
 
         self.t_shape_idx = (27, 28, 29, 30, 33, 36, 39, 42, 45)
-        self.anchor_t_shape = np.loadtxt('src/dataset/utils/STD_FACE_LANDMARKS.txt')
+        self.anchor_t_shape = np.loadtxt('/content/MakeItTalk/src/dataset/utils/STD_FACE_LANDMARKS.txt')
         self.anchor_t_shape = self.anchor_t_shape[self.t_shape_idx, :]
 
         self.opt_C = optim.Adam(self.C.parameters(), lr=opt_parser.lr, weight_decay=opt_parser.reg_lr)
