@@ -78,7 +78,7 @@ class Audio2landmark_model():
         self.anchor_t_shape = np.loadtxt('/content/MakeItTalk/src/dataset/utils/STD_FACE_LANDMARKS.txt')
         self.anchor_t_shape = self.anchor_t_shape[self.t_shape_idx, :]
 
-        with open(os.path.join('examples', 'dump', 'emb.pickle'), 'rb') as fp:
+        with open(os.path.join('/content/MakeItTalk/examples', 'dump', 'emb.pickle'), 'rb') as fp:
             self.test_embs = pickle.load(fp)
 
         print('====================================')
